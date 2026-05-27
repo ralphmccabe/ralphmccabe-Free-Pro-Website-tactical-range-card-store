@@ -379,16 +379,13 @@
                 </section>
                 </div>
 
-                <div id="recon-sidebar-view" class="space-y-6 hidden">
-                    <section class="space-y-4">
-                        <h2 class="section-label">1. Set Scenario Name</h2>
                         <div class="col-span-2">
                             <input type="text" id="recon-scenario-name" class="input-field border-emerald-500/50" placeholder="Scenario Name (e.g. Course 1)" maxlength="25">
                         </div>
 
                         <h2 class="section-label">2. Map Background</h2>
                         <input type="file" id="map-bg-upload" class="hidden" accept="image/*">
-                        <button onclick="document.getElementById('map-bg-upload').click()" class="w-full bg-gray-800 border border-gray-600 rounded p-2 text-xs font-bold flex items-center justify-center gap-2 hover:bg-gray-700 transition-colors mb-2">
+                        <button onclick="document.getElementById('map-bg-upload').click()" class="hidden w-full bg-gray-800 border border-gray-600 rounded p-2 text-xs font-bold flex items-center justify-center gap-2 hover:bg-gray-700 transition-colors mb-2">
                             <i data-lucide="upload" class="w-4 h-4 text-neon-green"></i> UPLOAD SATELLITE SCREENSHOT
                         </button>
                         <a href="https://maps.google.com" target="_blank" class="w-full bg-indigo-950/40 border border-indigo-500 rounded p-2 text-xs font-bold flex items-center justify-center gap-2 hover:bg-indigo-900/40 text-indigo-400 transition-colors">
@@ -1517,7 +1514,7 @@
                                 </div>
                                 <div class="flex items-center gap-2">
                                     <input type="file" id="vault-import-input" class="hidden" accept="image/png, image/jpeg" multiple>
-                                    <button id="vault-import-btn" class="text-[8px] bg-blue-950/80 text-blue-300 px-2 py-1 rounded border border-blue-700 hover:bg-blue-600 hover:text-white transition-colors flex items-center gap-1 font-bold">
+                                    <button id="vault-import-btn" class="hidden text-[8px] bg-blue-950/80 text-blue-300 px-2 py-1 rounded border border-blue-700 hover:bg-blue-600 hover:text-white transition-colors flex items-center gap-1 font-bold">
                                         <i data-lucide="download" class="w-3 h-3"></i> IMPORT
                                     </button>
                                     <button id="vault-export-btn" class="text-[8px] bg-emerald-950/80 text-emerald-300 px-2 py-1 rounded border border-emerald-700 hover:bg-emerald-600 hover:text-white transition-colors flex items-center gap-1 font-bold">
@@ -1544,7 +1541,7 @@
                         <button class="maximize-btn text-gray-500 hover:text-emerald-400 flex items-center" onclick="toggleFullscreen('panel-comms')"><span class="close-label font-black text-[9px] uppercase tracking-widest bg-emerald-950/80 px-2 py-1 rounded border border-emerald-600/50 text-emerald-400 mr-2">CLOSE WINDOW</span><i data-lucide="maximize-2" class="w-3 h-3"></i></button>
                     </div>
                 </div>
-                <div class="dash-panel-content bg-gray-950/60 flex flex-col overflow-hidden relative" id="comms-panel-root">
+                <div class="dash-panel-content bg-gray-950/60 flex flex-col overflow-y-auto relative custom-scrollbar" id="comms-panel-root">
                     
                     <!-- LOGIN SCREEN (HORIZONTAL LAYOUT) -->
                     <div id="comms-login" class="flex-1 flex flex-col items-center justify-center p-2 space-y-3">
@@ -1552,7 +1549,7 @@
                             <h3 class="text-[9px] font-black text-emerald-400 uppercase tracking-[0.2em]">ESTABLISH SECURE LINK</h3>
                             <p class="text-[6px] text-gray-500 uppercase">Authorized Personnel Only</p>
                         </div>
-                        <div class="flex flex-col items-center gap-4 w-full max-w-2xl bg-black/40 p-8 rounded border border-emerald-900/20 mt-2">
+                        <div class="flex flex-col items-center gap-4 w-full max-w-2xl bg-black/40 p-4 rounded border border-emerald-900/20 mt-2">
                             <p class="text-xs text-gray-400 text-center leading-relaxed font-mono">Welcome to the Tactical Range Card PRO live demonstration. Click below to establish a secure, isolated comms session.<br><br><span class="text-emerald-500 font-bold">Sessions automatically expire after 5 minutes of inactivity to protect privacy.</span></p>
                             
                             <!-- Hidden Inputs for original_script.js to read -->
@@ -1594,7 +1591,7 @@
                                 <!-- Messages injected here -->
                             </div>
                             <div class="p-2 bg-black/60 border-t border-gray-800 flex gap-1 items-center">
-                                <label for="chat-image-upload" class="bg-gray-800 hover:bg-gray-700 text-gray-400 p-1 rounded transition-colors cursor-pointer flex items-center justify-center h-[22px] w-[22px]">
+                                <label for="chat-image-upload" class="hidden bg-gray-800 hover:bg-gray-700 text-gray-400 p-1 rounded transition-colors cursor-pointer flex items-center justify-center h-[22px] w-[22px]">
                                     <i data-lucide="image" class="w-3 h-3"></i>
                                     <input type="file" id="chat-image-upload" accept="image/*" class="hidden">
                                 </label>
