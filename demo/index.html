@@ -1568,7 +1568,7 @@
                     <div id="comms-dashboard" class="hidden flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-emerald-900/30 overflow-y-auto lg:overflow-hidden custom-scrollbar">
                         
                         <!-- COL 1: RADIO / PTT -->
-                        <div class="flex flex-col bg-black/20 p-2 overflow-hidden min-h-[350px] lg:min-h-0">
+                        <div class="flex flex-col bg-black/20 p-2 overflow-hidden">
                             <div class="flex items-center justify-between mb-2 border-b border-gray-800 pb-1">
                                 <span class="text-[8px] font-black text-emerald-500 uppercase tracking-widest flex items-center gap-1"><i data-lucide="mic" class="w-2.5 h-2.5"></i> 2-Way Radio</span>
                                 <span id="ptt-status" class="text-[6px] text-gray-500 uppercase">Standby</span>
@@ -1583,7 +1583,7 @@
                         </div>
 
                         <!-- COL 2: MISSION CHAT -->
-                        <div class="flex flex-col bg-black/40 overflow-hidden min-h-[350px] lg:min-h-0">
+                        <div class="flex flex-col bg-black/40 overflow-hidden">
                             <div class="p-2 border-b border-gray-800 flex items-center justify-between">
                                 <span class="text-[8px] font-black text-blue-400 uppercase tracking-widest flex items-center gap-1"><i data-lucide="message-square" class="w-2.5 h-2.5"></i> Mission Chat</span>
                             </div>
@@ -1603,7 +1603,7 @@
                         </div>
 
                         <!-- COL 3: GPS TRACKING -->
-                        <div class="flex flex-col bg-black/20 overflow-hidden relative min-h-[350px] lg:min-h-0">
+                        <div class="flex flex-col bg-black/20 overflow-hidden relative">
                             <div class="p-2 border-b border-gray-800 flex items-center justify-between bg-black/40 z-10">
                                 <span class="text-[8px] font-black text-orange-400 uppercase tracking-widest flex items-center gap-1"><i data-lucide="map-pin" class="w-2.5 h-2.5"></i> Team Tracker</span>
                                 <button id="comms-map-sync" class="text-[6px] bg-orange-950 border border-orange-900 text-orange-400 px-1 rounded font-bold uppercase">Sync</button>
@@ -1614,7 +1614,7 @@
                         </div>
 
                         <!-- COL 4: ROSTER & LOGS -->
-                        <div class="flex flex-col bg-black/50 overflow-hidden min-h-[350px] lg:min-h-0">
+                        <div class="flex flex-col bg-black/50 overflow-hidden">
                             <div class="p-2 border-b border-gray-800 flex flex-col space-y-2">
                                 <span class="text-[8px] font-black text-pink-500 uppercase tracking-widest flex items-center gap-1"><i data-lucide="users" class="w-2.5 h-2.5"></i> Personnel Online</span>
                                 <div id="team-roster" class="flex flex-wrap gap-1 max-h-16 overflow-y-auto">
