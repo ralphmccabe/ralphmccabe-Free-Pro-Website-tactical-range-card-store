@@ -377,12 +377,15 @@
                         <button class="bg-gray-800 p-2 rounded text-sm font-bold" onclick="appendCalc('.')">.</button>
                     </div>
                 </section>
-                </div>
-
+                <div id="recon-sidebar-view" class="space-y-6 hidden">
+                    <section class="space-y-4">
+                        <h2 class="section-label">1. Set Scenario Name</h2>
                         <div class="col-span-2">
                             <input type="text" id="recon-scenario-name" class="input-field border-emerald-500/50" placeholder="Scenario Name (e.g. Course 1)" maxlength="25">
                         </div>
+                    </section>
 
+                    <section class="space-y-4">
                         <h2 class="section-label">2. Map Background</h2>
                         <input type="file" id="map-bg-upload" class="hidden" accept="image/*">
                         <button onclick="document.getElementById('map-bg-upload').click()" class="hidden w-full bg-gray-800 border border-gray-600 rounded p-2 text-xs font-bold flex items-center justify-center gap-2 hover:bg-gray-700 transition-colors mb-2">
