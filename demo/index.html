@@ -1665,7 +1665,7 @@
                     // Wipe local storage completely clean
                     localStorage.clear();
                     if(window.TRC_IDB) { window.TRC_IDB.delete('drafts', '___DRAFT_RECOVERY___'); }
-                    window.location.reload();
+                    window.location.href = '../index.html';
                 }, IDLE_TIMEOUT_MS);
             }
             
