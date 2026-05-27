@@ -1568,7 +1568,7 @@
                     </div>
 
                     <!-- DASHBOARD (4-COLUMN PARALLEL VIEW) -->
-                    <div id="comms-dashboard" class="hidden flex-1 grid grid-cols-4 divide-x divide-emerald-900/30 overflow-hidden">
+                    <div id="comms-dashboard" class="hidden flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-emerald-900/30 overflow-y-auto lg:overflow-hidden custom-scrollbar">
                         
                         <!-- COL 1: RADIO / PTT -->
                         <div class="flex flex-col bg-black/20 p-2 overflow-hidden">
@@ -1669,11 +1669,11 @@
                 }, IDLE_TIMEOUT_MS);
             }
             
-            window.addEventListener('mousemove', resetIdleTimer);
-            window.addEventListener('mousedown', resetIdleTimer);
-            window.addEventListener('keypress', resetIdleTimer);
-            window.addEventListener('touchstart', resetIdleTimer);
-            window.addEventListener('scroll', resetIdleTimer);
+            window.addEventListener('mousemove', resetIdleTimer, true);
+            window.addEventListener('mousedown', resetIdleTimer, true);
+            window.addEventListener('keypress', resetIdleTimer, true);
+            window.addEventListener('touchstart', resetIdleTimer, {passive: true, capture: true});
+            window.addEventListener('scroll', resetIdleTimer, true);
             
             resetIdleTimer();
         })();
