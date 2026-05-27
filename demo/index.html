@@ -1552,25 +1552,17 @@
                             <h3 class="text-[9px] font-black text-emerald-400 uppercase tracking-[0.2em]">ESTABLISH SECURE LINK</h3>
                             <p class="text-[6px] text-gray-500 uppercase">Authorized Personnel Only</p>
                         </div>
-                        <div class="flex items-end gap-2 w-full max-w-4xl bg-black/40 p-3 rounded border border-emerald-900/20">
-                            <div class="flex-1 space-y-1">
-                                <label class="text-[7px] text-gray-500 uppercase font-black ml-1">Team / Unit</label>
-                                <input type="text" id="comms-team" class="w-full bg-black border border-emerald-900/50 rounded px-2 py-2 text-[10px] text-white focus:border-emerald-500 outline-none uppercase placeholder-gray-800" placeholder="e.g. ALPHA">
-                            </div>
-                            <div class="flex-1 space-y-1">
-                                <label class="text-[7px] text-emerald-500 uppercase font-black ml-1">Mission Code</label>
-                                <input type="password" id="comms-passcode" class="w-full bg-black border border-emerald-500/50 rounded px-2 py-2 text-[10px] text-emerald-400 focus:border-emerald-400 outline-none uppercase placeholder-gray-800 text-center font-black tracking-widest" placeholder="PIN">
-                            </div>
-                            <div class="flex-1 space-y-1">
-                                <label class="text-[7px] text-gray-500 uppercase font-black ml-1">Call Sign</label>
-                                <input type="text" id="comms-callsign" class="w-full bg-black border border-emerald-900/50 rounded px-2 py-2 text-[10px] text-white focus:border-emerald-500 outline-none uppercase placeholder-gray-800" placeholder="e.g. CMDPST">
-                            </div>
-                            <div class="flex-1 space-y-1">
-                                <label class="text-[7px] text-gray-500 uppercase font-black ml-1">Role</label>
-                                <input type="text" id="comms-role" class="w-full bg-black border border-emerald-900/50 rounded px-2 py-2 text-[10px] text-white focus:border-emerald-500 outline-none uppercase placeholder-gray-800" placeholder="e.g. OPERATIONS">
-                            </div>
-                            <button id="comms-connect-btn" class="bg-emerald-600 hover:bg-emerald-500 text-white font-black px-6 py-2 rounded text-[10px] uppercase tracking-widest transition-all shadow-[0_0_15px_rgba(16,185,129,0.3)] active:scale-95 h-[34px]">
-                                Establish Link
+                        <div class="flex flex-col items-center gap-4 w-full max-w-2xl bg-black/40 p-8 rounded border border-emerald-900/20 mt-2">
+                            <p class="text-xs text-gray-400 text-center leading-relaxed font-mono">Welcome to the Tactical Range Card PRO live demonstration. Click below to establish a secure, isolated comms session.<br><br><span class="text-emerald-500 font-bold">Sessions automatically expire after 5 minutes of inactivity to protect privacy.</span></p>
+                            
+                            <!-- Hidden Inputs for original_script.js to read -->
+                            <input type="hidden" id="comms-team" value="DEMO">
+                            <input type="hidden" id="comms-passcode" value="">
+                            <input type="hidden" id="comms-callsign" value="GUEST">
+                            <input type="hidden" id="comms-role" value="OBSERVER">
+                            
+                            <button id="comms-connect-btn" class="bg-emerald-600 hover:bg-emerald-500 text-white font-black px-12 py-4 rounded text-xs uppercase tracking-widest transition-all shadow-[0_0_20px_rgba(16,185,129,0.4)] active:scale-95 mt-4">
+                                CONNECT DEMO SESSION
                             </button>
                         </div>
                     </div>
@@ -1647,5 +1639,44 @@
     </div>
 
     <script src="original_script.js"></script>
+    <!-- DEMO KIOSK MANAGER -->
+    <script>
+        (function() {
+            // 1. ISOLATED AUTO-PASSCODE
+            // Generate a truly random numeric PIN for every single click/load
+            let randomPin = Math.floor(100000 + Math.random() * 900000).toString(); // 6 digit PIN
+            
+            document.addEventListener('DOMContentLoaded', () => {
+                const passcodeInput = document.getElementById('comms-passcode');
+                const callsignInput = document.getElementById('comms-callsign');
+                
+                // Set the random passcode and callsign
+                if (passcodeInput) passcodeInput.value = randomPin;
+                if (callsignInput) callsignInput.value = `GUEST-${randomPin.substring(0,4)}`;
+            });
+
+            // 2. 5-MINUTE IDLE TIMEOUT
+            let idleTimer;
+            const IDLE_TIMEOUT_MS = 5 * 60 * 1000;
+            
+            function resetIdleTimer() {
+                clearTimeout(idleTimer);
+                idleTimer = setTimeout(() => {
+                    // Wipe local storage completely clean
+                    localStorage.clear();
+                    if(window.TRC_IDB) { window.TRC_IDB.delete('drafts', '___DRAFT_RECOVERY___'); }
+                    window.location.reload();
+                }, IDLE_TIMEOUT_MS);
+            }
+            
+            window.addEventListener('mousemove', resetIdleTimer);
+            window.addEventListener('mousedown', resetIdleTimer);
+            window.addEventListener('keypress', resetIdleTimer);
+            window.addEventListener('touchstart', resetIdleTimer);
+            window.addEventListener('scroll', resetIdleTimer);
+            
+            resetIdleTimer();
+        })();
+    </script>
 </body>
 </html>
